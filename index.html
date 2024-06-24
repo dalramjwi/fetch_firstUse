@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch API Example</title>
+  </head>
+  <body>
+    <h1>Fetch API Example</h1>
+    <button id="fetchButton">Fetch User Data</button>
+    <div id="output"></div>
+
+    <script>
+      document
+        .getElementById("fetchButton")
+        .addEventListener("click", function () {
+          fetch("https://jsonplaceholder.typicode.com/users")
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              const output = document.getElementById("output");
+              output.innerHTML = ""; // 기존 내용을 지우기
+              data.forEach((user) => {
+                const userDiv = document.createElement("div");
+                userDiv.textContent = `Name: ${user.name}, Email: ${user.email}`;
+                output.appendChild(userDiv);
+              });
+            })
+            .catch((error) => {
+              console.error("Fetch error:", error);
+              const output = document.getElementById("output");
+              output.textContent = "Failed to fetch user data";
+            });
+        });
+    </script>
+  </body>
+</html>
