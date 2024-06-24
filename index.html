@@ -25,13 +25,13 @@
               "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              const output = document.getElementById("output");
-              output.textContent = data.message;
-            })
-            .catch((error) => console.error("Error:", error));
+          });
+          // .then((response) => response.json())
+          // .then((data) => {
+          //   const output = document.getElementById("output");
+          //   output.textContent = data.message;
+          // })
+          // .catch((error) => console.error("Error:", error));
         });
     </script>
   </body>
